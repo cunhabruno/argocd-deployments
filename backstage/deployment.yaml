@@ -23,6 +23,8 @@ spec:
           env:
             - name: NODE_ENV
               value: "production"
+            - name: BACKEND_BASE_URL
+              value: "http://backstage.local"
           resources:
             requests:
               cpu: "500m"
