@@ -17,14 +17,12 @@ spec:
     spec:
       containers:
         - name: backstage-container
-          image: roadiehq/community-backstage-image:latest
+          image: cunhabruno/backstage:latest
           ports:
             - containerPort: 7000
           env:
             - name: NODE_ENV
               value: "production"
-            - name: BACKEND_BASE_URL
-              value: "http://backstage.local"
           resources:
             requests:
               cpu: "500m"
