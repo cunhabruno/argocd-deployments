@@ -19,7 +19,7 @@ spec:
         - name: backstage-container
           image: cunhabruno/backstage:latest
           ports:
-            - containerPort: 7000
+            - containerPort: 7007
           env:
             - name: NODE_ENV
               value: "production"
