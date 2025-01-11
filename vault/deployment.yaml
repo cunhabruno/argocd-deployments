@@ -15,8 +15,6 @@ spec:
       labels:
         app: vault
     spec:
-      nodeSelector:
-        kubernetes.io/hostname: brunohome3
       containers:
         - name: vault-container
           image: hashicorp/vault:latest

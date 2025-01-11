@@ -16,6 +16,8 @@ spec:
       labels:
         pod: cloudflared
     spec:
+      nodeSelector:
+        kubernetes.io/hostname: brunohome1
       containers:
         - command:
             - cloudflared
