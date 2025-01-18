@@ -9,6 +9,9 @@ spec:
     chart: gitea
     repoURL: https://dl.gitea.com/charts/
     targetRevision: 10.3.0
+    healm:
+      valuesFiles:
+      - values.yaml
   destination:
     server: "https://kubernetes.default.svc"
     namespace: gitea
