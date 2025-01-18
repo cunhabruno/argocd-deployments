@@ -8,6 +8,7 @@ spec:
   source:
     chart: gitea-charts
     repoURL: gitea-charts/gitea
+    targetRevision: '1.16.1'
     helm:
       releaseName: gitea
   destination:
