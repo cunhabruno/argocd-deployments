@@ -8,4 +8,5 @@ data:
     http_port 3128
     acl localnet src 10.0.0.0/8
     http_access allow localnet
-    http_access deny all
+    http_access allow manager localhost
+    http_access deny manager
