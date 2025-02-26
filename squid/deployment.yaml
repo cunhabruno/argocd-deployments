@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Deployment
+metadata:
+  name: squid-proxy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: squid
+  template:
+    metadata:
+      labels:
+        app: squid
+    spec:
+      containers:
+      - name: squid
+        image: sameersbn/squid:latest
+        ports:
+        - containerPort: 3128
+        volumeMounts:
+        - name: squid-conf
+          mountPath: /etc/squid
+      volumes:
+      - name: squid-conf
+        configMap:
+          name: squid-conf
