@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: squid-service
+  name: squid
 spec:
   selector:
     app: squid
