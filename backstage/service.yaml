@@ -5,8 +5,6 @@ metadata:
   namespace: backstage
   labels:
     app: backstage
-  annotations:
-    argocd.argoproj.io/sync-options: Delete=true
 spec:
   type: ClusterIP
   ports:
