@@ -19,7 +19,14 @@ spec:
             secret: gitlab-root-password
             key: password
         certmanager:
-          install: true
+          install: false
+        certmanager-issuer:
+          enabled: false
+        global:
+          ingress:
+            configureCertmanager: false
+            tls:
+              enabled: false
         nginx-ingress:
           enabled: true
         postgresql:
