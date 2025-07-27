@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: zigbee2mqtt
+  namespace: zigbee2mqtt
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: zigbee2mqtt
+  template:
+    metadata:
+      labels:
+        app: zigbee2mqtt
+    spec:
+      nodeSelector:
+        zigbee-usb: "true"
+      containers:
+      - name: zigbee2mqtt
+        image: koenkk/zigbee2mqtt:latest
+        securityContext:
+          privileged: true
+        volumeMounts:
+        - name: zigbee-device
+          mountPath: /dev/ttyUSB0
+        - name: zigbee-dialout
+          mountPath: /dev/serial
+      volumes:
+      - name: zigbee-device
+        hostPath:
+          path: /dev/ttyUSB0
+          type: CharDevice
+      - name: zigbee-dialout
+        hostPath:
+          path: /dev/serial
+          type: Directory
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: zigbee2mqtt-data
+  namespace: zigbee2mqtt
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
