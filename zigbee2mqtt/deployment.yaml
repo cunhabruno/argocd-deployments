@@ -25,6 +25,8 @@ spec:
           mountPath: /dev/ttyUSB0
         - name: zigbee-dialout
           mountPath: /dev/serial
+        - name: data
+          mountPath: /app/data
       volumes:
       - name: zigbee-device
         hostPath:
