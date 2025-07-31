@@ -34,15 +34,6 @@ spec:
         hostPath:
           path: /dev/serial
           type: Directory
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: zigbee2mqtt-data
-  namespace: zigbee2mqtt
-spec:
-  accessModes:
-  - ReadWriteOnce
-  resources:
-    requests:
-      storage: 1Gi
+      - name: data
+        persistentVolumeClaim:
+          claimName: zigbee2mqtt-data
