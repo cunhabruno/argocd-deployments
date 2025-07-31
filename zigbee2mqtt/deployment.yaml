@@ -15,6 +15,24 @@ spec:
     spec:
       nodeSelector:
         zigbee-usb: "true"
+      initContainers:
+      - name: copy-config
+        image: busybox:latest
+        command: ["sh", "-c"]
+        args:
+        - |
+          echo "Copying configuration.yaml from configmap to persistent volume..."
+          cp /configmap/configuration.yaml /app/data/configuration.yaml
+          if [ -f /configmap/devices.yaml ]; then
+            echo "Copying devices.yaml from configmap to persistent volume..."
+            cp /configmap/devices.yaml /app/data/devices.yaml
+          fi
+          echo "Configuration copied."
+        volumeMounts:
+        - name: config-from-map
+          mountPath: /configmap
+        - name: data
+          mountPath: /app/data
       containers:
       - name: zigbee2mqtt
         image: koenkk/zigbee2mqtt:latest
