@@ -29,7 +29,7 @@ spec:
           fi
           echo "Configuration copied."
         volumeMounts:
-        - name: config-from-map
+        - name: config
           mountPath: /configmap
         - name: data
           mountPath: /app/data
