@@ -32,16 +32,16 @@ spec:
               name: automation-config
               key: NODE_ENV
         # MQTT Credentials from Secret (reuse the same secret as Zigbee2MQTT)
-        - name: MQTT_USERNAME
-          valueFrom:
-            secretKeyRef:
-              name: zigbee2mqtt-mqtt-credentials
-              key: username
-        - name: MQTT_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: zigbee2mqtt-mqtt-credentials
-              key: password
+        # - name: MQTT_USERNAME
+        #   valueFrom:
+        #     secretKeyRef:
+        #       name: zigbee2mqtt-mqtt-credentials
+        #       key: username
+        # - name: MQTT_PASSWORD
+        #   valueFrom:
+        #     secretKeyRef:
+        #       name: zigbee2mqtt-mqtt-credentials
+        #       key: password
         resources:
           requests:
             memory: "128Mi"
