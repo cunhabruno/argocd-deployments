@@ -4,6 +4,6 @@ metadata:
   name: automation-config
   namespace: home-automation
 data:
-  MQTT_BROKER_URL: "ws://mosquitto.mqtt.svc.cluster.local:9001"
+  MQTT_BROKER_URL: "mqtt://mosquitto.mqtt.svc.cluster.local:1883"
   NODE_ENV: "production"
   LOG_LEVEL: "info"
