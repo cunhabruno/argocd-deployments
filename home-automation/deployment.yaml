@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: automation-server
-        image: cunhabruno/home-automation:sha-833af31
+        image: cunhabruno/home-automation:latest
         imagePullPolicy: Always
         env:
         # MQTT Configuration from ConfigMap
