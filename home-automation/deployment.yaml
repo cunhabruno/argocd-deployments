@@ -1,0 +1,68 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: zigbee-automation
+  namespace: home-automation
+  labels:
+    app: home-automation
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: home-automation
+  template:
+    metadata:
+      labels:
+        app: home-automation
+    spec:
+      containers:
+      - name: automation-server
+        image: cunhabruno/home-automation:sha-833af31
+        imagePullPolicy: Always
+        env:
+        # MQTT Configuration from ConfigMap
+        - name: MQTT_BROKER_URL
+          valueFrom:
+            configMapKeyRef:
+              name: automation-config
+              key: MQTT_BROKER_URL
+        - name: NODE_ENV
+          valueFrom:
+            configMapKeyRef:
+              name: automation-config
+              key: NODE_ENV
+        # MQTT Credentials from Secret (reuse the same secret as Zigbee2MQTT)
+        - name: MQTT_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: zigbee2mqtt-mqtt-credentials
+              key: username
+        - name: MQTT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: zigbee2mqtt-mqtt-credentials
+              key: password
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "100m"
+          limits:
+            memory: "256Mi"
+            cpu: "200m"
+        livenessProbe:
+          exec:
+            command:
+            - node
+            - -e
+            - "console.log('Liveness check')"
+          initialDelaySeconds: 30
+          periodSeconds: 30
+        readinessProbe:
+          exec:
+            command:
+            - node
+            - -e
+            - "console.log('Readiness check')"
+          initialDelaySeconds: 10
+          periodSeconds: 10
+      restartPolicy: Always
