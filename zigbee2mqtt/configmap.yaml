@@ -22,3 +22,5 @@ data:
       port: 8080
     experimental:
       new_api: true
+      transmit_power: 20
+      touchlink: true
