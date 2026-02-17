@@ -3,8 +3,6 @@ kind: Deployment
 metadata:
   name: mitmproxy
   namespace: mitmproxy
-  annotations:
-    argocd.argoproj.io/hook: Skip
 spec:
   replicas: 1
   selector:
