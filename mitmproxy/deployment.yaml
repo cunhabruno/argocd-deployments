@@ -17,6 +17,9 @@ spec:
       - name: mitmproxy
         image: mitmproxy/mitmproxy:latest
         command: ["/bin/sh", "-c", "mitmweb --web-host 0.0.0.0 --web-port 8081 --listen-port 8080 --no-web-open-browser --set web_password=''"]
+        env:
+        - name: PYTHONUNBUFFERED
+          value: "1"
         ports:
         - name: proxy
           containerPort: 8080
