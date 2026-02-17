@@ -16,7 +16,7 @@ spec:
       containers:
       - name: mitmproxy
         image: mitmproxy/mitmproxy:latest
-        command: ["mitmweb", "--web-host", "0.0.0.0", "--web-port", "8081", "--listen-port", "8080", "--no-web-open-browser"]
+        command: ["mitmweb", "--web-host", "0.0.0.0", "--web-port", "8081", "--listen-port", "8080", "--no-web-open-browser", "--set", "web_password="]
         ports:
         - name: proxy
           containerPort: 8080
