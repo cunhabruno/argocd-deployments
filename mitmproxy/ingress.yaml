@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: mitmproxy
+  namespace: mitmproxy
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+spec:
+  rules:
+  - host: mitmproxy.house
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: mitmproxy
+            port:
+              number: 8081
+  tls:
+  - hosts:
+    - mitmproxy.house
+    secretName: mitmproxy-tls
