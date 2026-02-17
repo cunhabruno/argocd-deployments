@@ -3,8 +3,6 @@ kind: Ingress
 metadata:
   name: mitmproxy
   namespace: mitmproxy
-  annotations:
-    cert-manager.io/cluster-issuer: letsencrypt-prod
 spec:
   rules:
   - host: mitmproxy.house
@@ -17,7 +15,3 @@ spec:
             name: mitmproxy
             port:
               number: 8081
-  tls:
-  - hosts:
-    - mitmproxy.house
-    secretName: mitmproxy-tls
