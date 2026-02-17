@@ -19,5 +19,5 @@ spec:
               number: 8080
   tls:
   - hosts:
-    - zigbee.local
+    - zigbee.house
     secretName: zigbee2mqtt-tls
