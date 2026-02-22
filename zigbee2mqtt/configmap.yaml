@@ -16,7 +16,7 @@ data:
     advanced:
       log_level: info
       pan_id: GENERATE
-      channel: 11
+      channel: 25
       network_key: GENERATE
     frontend:
       port: 8080
