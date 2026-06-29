@@ -27,10 +27,14 @@ spec:
             echo "Copying devices.yaml from configmap to persistent volume..."
             cp /configmap/devices.yaml /app/data/devices.yaml
           fi
+          echo "Copying secret.yaml from secret to persistent volume..."
+          cp /secret/secret.yaml /app/data/secret.yaml
           echo "Configuration copied."
         volumeMounts:
         - name: config
           mountPath: /configmap
+        - name: secret
+          mountPath: /secret
         - name: data
           mountPath: /app/data
       containers:
@@ -59,4 +63,7 @@ spec:
           claimName: zigbee2mqtt-data
       - name: config
         configMap:
-          name: zigbee2mqtt-config 
+          name: zigbee2mqtt-config
+      - name: secret
+        secret:
+          secretName: zigbee2mqtt-secret
