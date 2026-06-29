@@ -18,7 +18,6 @@ data:
       pan_id: 10541
       ext_pan_id: [0x00, 0x12, 0x4b, 0x00, 0x2f, 0x8a, 0xed, 0x18]
       channel: 25
-      network_key: !secret network_key
     frontend:
       port: 8080
     experimental:
